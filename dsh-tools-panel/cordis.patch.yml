@@ -1,0 +1,4 @@
+# 组合补丁:安装后把插件行插入 profile 组合(作用域包名需加引号)。
+- insert:
+    - id: tools-panel
+      name: 'dsh-tools-panel'

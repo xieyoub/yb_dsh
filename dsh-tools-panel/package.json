@@ -1,0 +1,54 @@
+{
+  "name": "dsh-tools-panel",
+  "version": "0.1.0",
+  "description": "本地工具面板:右上角工具按钮,可增删改本地程序并一键启动(零构建动态插件)。Local tools panel for DeepSeek Harness Web.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xieyoub/yb_dsh.git",
+    "directory": "dsh-tools-panel"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "dynamic",
+    "cordis.patch.yml",
+    "manifest.json",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "platform": "web"
+    },
+    "plugin": {
+      "id": "dsh-tools-panel",
+      "kind": "dynamic-cordis-plugin",
+      "host": "dynamic/host.js",
+      "client": "dynamic/client.js",
+      "hostHandler": "tools.run",
+      "clientSlots": [
+        "conversation.session.header.utilities",
+        "shell.overlay"
+      ]
+    }
+  }
+}

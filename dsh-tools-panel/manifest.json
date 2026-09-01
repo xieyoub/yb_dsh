@@ -1,0 +1,32 @@
+{
+  "id": "dsh-tools-panel",
+  "name": "本地工具面板 (Local Tools Panel)",
+  "version": "0.1.0",
+  "description": "右上角工具按钮;本地程序图标网格(增删改),点击一键启动,底部 + 弹本地文件选择添加程序",
+  "kind": "dynamic-cordis-plugin",
+  "platforms": {
+    "host": "dynamic/host.js",
+    "client": "dynamic/client.js"
+  },
+  "host": {
+    "handlers": [
+      "tools.pick",
+      "tools.run",
+      "tools.icon"
+    ],
+    "services": [
+      "subprocess",
+      "sandboxPolicy"
+    ]
+  },
+  "client": {
+    "slots": [
+      "conversation.session.header.utilities",
+      "shell.overlay"
+    ],
+    "services": [
+      "slots"
+    ]
+  },
+  "license": "MIT"
+}
